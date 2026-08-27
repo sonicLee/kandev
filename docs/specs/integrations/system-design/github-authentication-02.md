@@ -71,6 +71,9 @@ post-signature processing failures produce `failing`; a later valid successful d
 - Each attached repository is resolved once for an individual launch or resume. The resolved
   repository set is shared by task configuration and credential-snapshot construction rather than
   triggering repeated materialization or origin mutation.
+- The prepared-workspace path resolves the same repository set before it returns or starts an
+  agent. An existing running-executor record does not bypass managed-checkout origin
+  reconciliation.
 - Broker issuance and redemption use the same persisted repository identity fields. A local Git
   checkout and its `origin` are materialization data, not authorization data.
 - A public `github.com` remote can supply an in-memory origin when persisted provider-host metadata
